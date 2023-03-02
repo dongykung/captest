@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.*
 
 import androidx.core.app.ActivityCompat
+import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -43,30 +44,28 @@ class DetailViewFragment: Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view= LayoutInflater.from(activity).inflate(R.layout.fragment_main,container,false)
         db= Firebase.firestore
-
-
-
-
         val uid= Firebase.auth.currentUser?.uid
-        var test:String=""
         val fab:FloatingActionButton=view.CreateClub
         val recyclerView:RecyclerView=view.detailviewfragment_recyclerview
-        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-
-                if (dy > 10 && fab.isShown) {
+        val nestedscrollview:NestedScrollView=view.nestedScrollView
+        nestedscrollview.setOnScrollChangeListener(object: NestedScrollView.OnScrollChangeListener {
+            override fun onScrollChange(
+                v: NestedScrollView,
+                scrollX: Int,
+                scrollY: Int,
+                oldScrollX: Int,
+                oldScrollY: Int
+            ) {
+                if(scrollY>oldScrollY){
                     fab.hide()
                 }
-
-                if (dy < -10 && !fab.isShown) {
-                    fab.show()
-                }
-                if (!recyclerView.canScrollVertically(-1)) {
+                if(scrollY<oldScrollY){
                     fab.show()
                 }
             }
+
         })
+
         fab.setOnClickListener{
             if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
                 val intent = Intent(activity, CreateActivity::class.java)
@@ -84,12 +83,15 @@ class DetailViewFragment: Fragment() {
 
         view.detailviewfragment_recyclerview.adapter=DetailViewRecyclerViewAdapter()
         view.detailviewfragment_recyclerview.layoutManager=LinearLayoutManager(activity)
+        /*
         view.refresh_layout.setOnRefreshListener {
             //clubdata.shuffle()
             update()
             view.detailviewfragment_recyclerview.adapter?.notifyDataSetChanged()
             refresh_layout.isRefreshing = false
         }
+
+         */
 
 
         return view
@@ -152,6 +154,11 @@ class DetailViewFragment: Fragment() {
                         param.marginStart=30
                         test2.layoutParams=param
                         scrapMainLayout?.addView(test2)
+                        test2.setOnClickListener {
+                            val intent = Intent(activity, ClickiconActivity::class.java)
+                            intent.putExtra("hobby", data)
+                            startActivity(intent)
+                        }
                     }
                     if(data=="음악"){
                         val test=Button(context)
@@ -316,11 +323,10 @@ class DetailViewFragment: Fragment() {
                                 db.collection("meeting_room").document(data2).get()
                                     .addOnSuccessListener { document3 ->
                                         val item3 = document3.toObject(ClubData::class.java)
-                                        if(item3!=null) {
                                             clubdata.add(item3!!)
                                             clubdata.sortByDescending { it.upload_time }
                                             notifyDataSetChanged()
-                                        }
+
                                     }
                             }
                         }

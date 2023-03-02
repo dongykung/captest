@@ -73,15 +73,19 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline12"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/clubprofile" />
+        app:srcCompat="@drawable/profile_default_img" />
 
     <ImageView
         android:id="@+id/changehobby"
         android:layout_width="0dp"
-        android:layout_height="70dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline182"
+        app:layout_constraintEnd_toStartOf="@+id/guideline15"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline181"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/hobby" />
 
     <ImageView
@@ -229,6 +233,12 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.9" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.18" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline141"
         android:layout_width="wrap_content"
