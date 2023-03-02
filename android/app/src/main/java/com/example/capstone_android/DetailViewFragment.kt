@@ -144,17 +144,17 @@ class DetailViewFragment: Fragment() {
                 for(data in item?.interest_array!!){
                     if(data=="운동"){
                         val param=GridLayout.LayoutParams()
-                        val test2=Button(context)
+                        val test=Button(context)
                         //test2.setBackgroundColor(R.color.not)
-                        test2.setBackgroundResource(R.drawable.shape_for_circle_button)
-                        test2.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.xml_sports,0,0)
-                        test2.text="운동"
+                        test.setBackgroundResource(R.drawable.shape_for_circle_button)
+                        test.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.xml_sports,0,0)
+                        test.text="운동"
                         param.width =165
                         param.height =230
                         param.marginStart=30
-                        test2.layoutParams=param
-                        scrapMainLayout?.addView(test2)
-                        test2.setOnClickListener {
+                        test.layoutParams=param
+                        scrapMainLayout?.addView(test)
+                        test.setOnClickListener {
                             val intent = Intent(activity, ClickiconActivity::class.java)
                             intent.putExtra("hobby", data)
                             startActivity(intent)
@@ -171,6 +171,11 @@ class DetailViewFragment: Fragment() {
                         param.marginStart=30
                         test.layoutParams=param
                         scrapMainLayout?.addView(test)
+                        test.setOnClickListener {
+                            val intent = Intent(activity, ClickiconActivity::class.java)
+                            intent.putExtra("hobby", data)
+                            startActivity(intent)
+                        }
                     }
                     if(data=="여행"){
                         val test=Button(context)
@@ -183,6 +188,11 @@ class DetailViewFragment: Fragment() {
                         param.marginStart=30
                         test.layoutParams=param
                         scrapMainLayout?.addView(test)
+                        test.setOnClickListener {
+                            val intent = Intent(activity, ClickiconActivity::class.java)
+                            intent.putExtra("hobby", data)
+                            startActivity(intent)
+                        }
                     }
                     if(data=="사교"){
                         val test=Button(context)
@@ -195,6 +205,11 @@ class DetailViewFragment: Fragment() {
                         param.marginStart=30
                         test.layoutParams=param
                         scrapMainLayout?.addView(test)
+                        test.setOnClickListener {
+                            val intent = Intent(activity, ClickiconActivity::class.java)
+                            intent.putExtra("hobby", data)
+                            startActivity(intent)
+                        }
                     }
                     if(data=="독서"){
                         val test=Button(context)
@@ -207,6 +222,11 @@ class DetailViewFragment: Fragment() {
                         param.marginStart=30
                         test.layoutParams=param
                         scrapMainLayout?.addView(test)
+                        test.setOnClickListener {
+                            val intent = Intent(activity, ClickiconActivity::class.java)
+                            intent.putExtra("hobby", data)
+                            startActivity(intent)
+                        }
                     }
                     if(data=="요리"){
                         val test=Button(context)
@@ -219,6 +239,11 @@ class DetailViewFragment: Fragment() {
                         param.marginStart=30
                         test.layoutParams=param
                         scrapMainLayout?.addView(test)
+                        test.setOnClickListener {
+                            val intent = Intent(activity, ClickiconActivity::class.java)
+                            intent.putExtra("hobby", data)
+                            startActivity(intent)
+                        }
                     }
                     if(data=="사진"){
                         val test=Button(context)
@@ -231,6 +256,11 @@ class DetailViewFragment: Fragment() {
                         param.marginStart=30
                         test.layoutParams=param
                         scrapMainLayout?.addView(test)
+                        test.setOnClickListener {
+                            val intent = Intent(activity, ClickiconActivity::class.java)
+                            intent.putExtra("hobby", data)
+                            startActivity(intent)
+                        }
                     }
                     if(data=="게임"){
                         val test=Button(context)
@@ -243,6 +273,11 @@ class DetailViewFragment: Fragment() {
                         param.marginStart=30
                         test.layoutParams=param
                         scrapMainLayout?.addView(test)
+                        test.setOnClickListener {
+                            val intent = Intent(activity, ClickiconActivity::class.java)
+                            intent.putExtra("hobby", data)
+                            startActivity(intent)
+                        }
                     }
                     if(data=="댄스"){
                         val test=Button(context)
@@ -255,6 +290,11 @@ class DetailViewFragment: Fragment() {
                         param.marginStart=30
                         test.layoutParams=param
                         scrapMainLayout?.addView(test)
+                        test.setOnClickListener {
+                            val intent = Intent(activity, ClickiconActivity::class.java)
+                            intent.putExtra("hobby", data)
+                            startActivity(intent)
+                        }
                     }
                     if(data=="자동차"){
                         val test=Button(context)
@@ -267,6 +307,11 @@ class DetailViewFragment: Fragment() {
                         param.marginStart=30
                         test.layoutParams=param
                         scrapMainLayout?.addView(test)
+                        test.setOnClickListener {
+                            val intent = Intent(activity, ClickiconActivity::class.java)
+                            intent.putExtra("hobby", data)
+                            startActivity(intent)
+                        }
                     }
                     if(data=="애완동물"){
                         val test=Button(context)
@@ -279,6 +324,11 @@ class DetailViewFragment: Fragment() {
                         param.marginStart=30
                         test.layoutParams=param
                         scrapMainLayout?.addView(test)
+                        test.setOnClickListener {
+                            val intent = Intent(activity, ClickiconActivity::class.java)
+                            intent.putExtra("hobby", data)
+                            startActivity(intent)
+                        }
                     }
                     if(data=="공예"){
                         val test=Button(context)
@@ -291,6 +341,11 @@ class DetailViewFragment: Fragment() {
                         param.marginStart=30
                         test.layoutParams=param
                         scrapMainLayout?.addView(test)
+                        test.setOnClickListener {
+                            val intent = Intent(activity, ClickiconActivity::class.java)
+                            intent.putExtra("hobby", data)
+                            startActivity(intent)
+                        }
                     }
                     if(data=="봉사활동"){
                         val test=Button(context)
@@ -303,6 +358,11 @@ class DetailViewFragment: Fragment() {
                         param.marginStart=30
                         test.layoutParams=param
                         scrapMainLayout?.addView(test)
+                        test.setOnClickListener {
+                            val intent = Intent(activity, ClickiconActivity::class.java)
+                            intent.putExtra("hobby", data)
+                            startActivity(intent)
+                        }
                     }
                     if(data=="스터디그룹"){
                         val test=Button(context)
@@ -315,6 +375,11 @@ class DetailViewFragment: Fragment() {
                         param.marginStart=30
                         test.layoutParams=param
                         scrapMainLayout?.addView(test)
+                        test.setOnClickListener {
+                            val intent = Intent(activity, ClickiconActivity::class.java)
+                            intent.putExtra("hobby", data)
+                            startActivity(intent)
+                        }
                     }
                     db.collection("category").document(data).get().addOnSuccessListener { document2 ->
                         val item2 = document2.toObject(getclubuid::class.java)
