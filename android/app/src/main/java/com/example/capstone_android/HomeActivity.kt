@@ -20,7 +20,10 @@ class HomeActivity: AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
+        val toolbar=binding.toolbar
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        binding.textview.text="성북구"
 
         val detailViewFragment=DetailViewFragment()
         supportFragmentManager.beginTransaction().replace(R.id.main_content,detailViewFragment).commit()

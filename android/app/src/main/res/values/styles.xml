@@ -7,4 +7,7 @@
     <style name="AppBottomSheetDialogTheme" parent="Theme.MaterialComponents.Light.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/AppModalStyle</item>
     </style>
+    <style name="AppTheme.Actionbar" parent="Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="android:tint">@color/black</item>
+    </style>
 </resources>

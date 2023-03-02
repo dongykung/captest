@@ -18,7 +18,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-
+            android:theme="@style/AppTheme.Actionbar"
             app:layout_scrollFlags="scroll|enterAlways">
             <TextView
                 android:id="@+id/textview"
