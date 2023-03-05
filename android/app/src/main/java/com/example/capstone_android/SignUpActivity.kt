@@ -268,7 +268,7 @@ class SignUpActivity : AppCompatActivity() { // 회원가입 화면
             interest_array.add("음악")
         }
         if(binding.societyCheckBox.isChecked) {
-            interest_array.add("사교/직업")
+            interest_array.add("사교")
         }
         if(binding.readCheckBox.isChecked) {
             interest_array.add("독서")

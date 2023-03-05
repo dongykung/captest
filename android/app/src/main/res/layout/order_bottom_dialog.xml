@@ -79,7 +79,7 @@
             android:background="@color/white"
             android:contentDescription="TODO"
             android:scaleType="fitXY"
-            android:src="@drawable/icon_read"
+            android:src="@drawable/icon_book"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/jobImageButton"
             app:layout_constraintTop_toTopOf="@+id/sportsImageButton" />

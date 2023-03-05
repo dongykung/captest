@@ -52,7 +52,7 @@ class CreateViewFragment: Fragment() {
                     "사교"->{hobby="사교"
                         view.changehobby.setImageResource(R.drawable.icon_job)}
                     "독서"->{hobby="독서"
-                        view.changehobby.setImageResource(R.drawable.icon_read)}
+                        view.changehobby.setImageResource(R.drawable.icon_book)}
                     "요리"->{hobby="요리"
                         view.changehobby.setImageResource(R.drawable.icon_cook)}
                     "사진"->{hobby="사진"
@@ -142,7 +142,7 @@ class CreateViewFragment: Fragment() {
                 clubdata.imageUrl=uri.toString()
                 clubdata.title = view.club.text.toString()
                 clubdata.info_text = view.explainclub2.text.toString()
-                clubdata.max = Integer.parseInt(view.maxnumber.text.toString())
+                clubdata.max = (view.maxnumber.text.toString())
                 clubdata.upload_time = System.currentTimeMillis()
                 clubdata.writer_uid = Firebase.auth.currentUser?.uid.toString()
                 clubdata.Uid=makeuid

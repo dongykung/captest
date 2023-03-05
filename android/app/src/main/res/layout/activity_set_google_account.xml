@@ -211,7 +211,7 @@
                         android:id="@+id/imageView8"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        app:srcCompat="@drawable/icon_read" />
+                        app:srcCompat="@drawable/icon_book" />
 
                     <CheckBox
                         android:id="@+id/read_checkBox"

@@ -2,5 +2,5 @@
     <item
         android:width="65dp"
         android:height="45dp"
-        android:drawable="@drawable/icon_read" />
+        android:drawable="@drawable/icon_book" />
 </layer-list>

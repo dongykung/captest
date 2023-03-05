@@ -46,6 +46,7 @@ class DetailViewFragment: Fragment() {
         db= Firebase.firestore
         val uid= Firebase.auth.currentUser?.uid
         val fab:FloatingActionButton=view.CreateClub
+        val changefab:FloatingActionButton=view.Settingbtn
         val recyclerView:RecyclerView=view.detailviewfragment_recyclerview
         val nestedscrollview:NestedScrollView=view.nestedScrollView
         nestedscrollview.setOnScrollChangeListener(object: NestedScrollView.OnScrollChangeListener {
@@ -65,7 +66,10 @@ class DetailViewFragment: Fragment() {
             }
 
         })
-
+        changefab.setOnClickListener{
+            val intent=Intent(activity,ChangeHobbyActivity::class.java)
+            startActivity(intent)
+        }
         fab.setOnClickListener{
             if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
                 val intent = Intent(activity, CreateActivity::class.java)
@@ -83,7 +87,7 @@ class DetailViewFragment: Fragment() {
 
         view.detailviewfragment_recyclerview.adapter=DetailViewRecyclerViewAdapter()
         view.detailviewfragment_recyclerview.layoutManager=LinearLayoutManager(activity)
-        /*
+
         view.refresh_layout.setOnRefreshListener {
             //clubdata.shuffle()
             update()
@@ -91,7 +95,7 @@ class DetailViewFragment: Fragment() {
             refresh_layout.isRefreshing = false
         }
 
-         */
+
 
 
         return view
@@ -145,7 +149,6 @@ class DetailViewFragment: Fragment() {
                     if(data=="운동"){
                         val param=GridLayout.LayoutParams()
                         val test=Button(context)
-                        //test2.setBackgroundColor(R.color.not)
                         test.setBackgroundResource(R.drawable.shape_for_circle_button)
                         test.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.xml_sports,0,0)
                         test.text="운동"
@@ -334,7 +337,7 @@ class DetailViewFragment: Fragment() {
                         val test=Button(context)
                         val param=GridLayout.LayoutParams()
                         test.setBackgroundResource(R.drawable.shape_for_circle_button)
-                        test.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.xml_art,0,0)
+                        //test.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.xml_art,0,0)
                         test.text="공예"
                         param.width=165
                         param.height=230
