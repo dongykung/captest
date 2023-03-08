@@ -35,7 +35,6 @@ class CreateActivity: AppCompatActivity() {
     }
     override fun onDestroy() {
         super.onDestroy()
-        println("종료")
         val newintent= Intent()
         newintent.putExtra("result",1)
         setResult(RESULT_OK,newintent)

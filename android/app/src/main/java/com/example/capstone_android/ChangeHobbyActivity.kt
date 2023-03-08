@@ -2,19 +2,16 @@ package com.example.capstone_android
 
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.GridLayout
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.iterator
 import com.example.capstone_android.data.SignUpData
 import com.example.capstone_android.databinding.ActivityChangehobbyBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_sign_up.view.*
@@ -23,27 +20,17 @@ import kotlinx.android.synthetic.main.activity_sign_up.view.*
 class ChangeHobbyActivity:AppCompatActivity() {
     private lateinit var binding: ActivityChangehobbyBinding
     lateinit var db : FirebaseFirestore
+    lateinit var myhobbylist:ArrayList<String>
     @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityChangehobbyBinding.inflate(layoutInflater)
         db=Firebase.firestore
-        val myhobbylist:ArrayList<String> = ArrayList<String>()
-        val allhobbylist:ArrayList<String> = ArrayList<String>()
-        allhobbylist.add("공예")
-        allhobbylist.add("독서")
-        allhobbylist.add("자동차")
-        allhobbylist.add("요리")
-        allhobbylist.add("댄스")
-        allhobbylist.add("게임")
-        allhobbylist.add("사교")
-        allhobbylist.add("음악")
-        allhobbylist.add("애완동물")
-        allhobbylist.add("사진")
-        allhobbylist.add("운동")
-        allhobbylist.add("스터디그룹")
-        allhobbylist.add("여행")
-        allhobbylist.add("봉사활동")
+        myhobbylist = ArrayList<String>()
+        val allhobbylist = arrayListOf<String>(
+                "운동", "여행", "음악", "사교", "독서",
+                "요리", "사진", "게임", "댄스", "자동차",
+                "애완동물", "공예", "봉사활동", "스터디그룹")
 
         setContentView(binding.root)
         val imagegrid=binding.imagegrid
@@ -63,8 +50,6 @@ class ChangeHobbyActivity:AppCompatActivity() {
                     val checkbox=CheckBox(applicationContext)
                     checkbox.isChecked=true
                     checkbox.setButtonDrawable(R.color.transparent)
-                    checkbox.setBackgroundResource(R.color.transparent)
-                    checkbox.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.xml_cook,0,0)
                     checkhobby(data,checkbox,imagegrid,checkbox.isChecked)
                 }
                 else{
@@ -85,143 +70,213 @@ class ChangeHobbyActivity:AppCompatActivity() {
     fun checkhobby(hobby:String, checkbox: CheckBox, imagegrid:GridLayout,check:Boolean){
         if(hobby=="운동") {
             val param = GridLayout.LayoutParams()
-            checkbox.text = "     $hobby"
-            checkbox.isChecked = true
-            param.width = 165
+            param.width = 190
             param.height = 230
-            param.marginStart = 30
+            param.marginStart = 15
             checkbox.layoutParams = param
             imagegrid.addView(checkbox)
+            checkbox.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable._checkbox_sport,0,0)
+            checkbox.setBackgroundResource(R.color.transparent)
+            checkbox.text= "    $hobby"
+            checkbox.setOnCheckedChangeListener{ _,ischecked ->
+                if(ischecked) myhobbylist.add(hobby)
+                else myhobbylist.remove(hobby)
+            }
         }
         if(hobby=="음악"){
             val param = GridLayout.LayoutParams()
-            checkbox.text = "     $hobby"
-            checkbox.isChecked = true
-            param.width = 165
+            param.width = 190
             param.height = 230
-            param.marginStart = 30
+            param.marginStart = 15
             checkbox.layoutParams = param
             imagegrid.addView(checkbox)
+            checkbox.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable._checkbox_music,0,0)
+            checkbox.setBackgroundResource(R.color.transparent)
+            checkbox.text= "      $hobby"
+            checkbox.setOnCheckedChangeListener{ _,ischecked ->
+                if(ischecked) myhobbylist.add(hobby)
+                else myhobbylist.remove(hobby)
+            }
         }
         if(hobby=="여행"){
             val param = GridLayout.LayoutParams()
-            checkbox.text = "     $hobby"
-            checkbox.isChecked = true
-            param.width = 165
+            param.width = 190
             param.height = 230
-            param.marginStart = 30
+            param.marginStart = 15
             checkbox.layoutParams = param
             imagegrid.addView(checkbox)
+            checkbox.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable._checkbox_trip,0,0)
+            checkbox.setBackgroundResource(R.color.transparent)
+            checkbox.text= "      $hobby"
+            checkbox.setOnCheckedChangeListener{ _,ischecked ->
+                if(ischecked) myhobbylist.add(hobby)
+                else myhobbylist.remove(hobby)
+            }
         }
         if(hobby=="사교"){
             val param = GridLayout.LayoutParams()
-            checkbox.text = "     $hobby"
-            checkbox.isChecked = true
-            param.width = 165
+            param.width = 190
             param.height = 230
-            param.marginStart = 30
+            param.marginStart = 15
             checkbox.layoutParams = param
             imagegrid.addView(checkbox)
+            checkbox.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable._checkbox_job,0,0)
+            checkbox.setBackgroundResource(R.color.transparent)
+            checkbox.text= "      $hobby"
+            checkbox.setOnCheckedChangeListener{ _,ischecked ->
+                if(ischecked) myhobbylist.add(hobby)
+                else myhobbylist.remove(hobby)
+            }
         }
         if(hobby=="독서"){
             val param = GridLayout.LayoutParams()
-            checkbox.text = "     $hobby"
-            checkbox.isChecked = true
-            param.width = 165
+            param.width = 190
             param.height = 230
-            param.marginStart = 30
+            param.marginStart = 15
             checkbox.layoutParams = param
             imagegrid.addView(checkbox)
+            checkbox.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable._checkbox_read,0,0)
+            checkbox.setBackgroundResource(R.color.transparent)
+            checkbox.text= "      $hobby"
+            checkbox.setOnCheckedChangeListener{ _,ischecked ->
+                if(ischecked) myhobbylist.add(hobby)
+                else myhobbylist.remove(hobby)
+            }
         }
         if(hobby=="요리"){
             val param = GridLayout.LayoutParams()
-            checkbox.text = "     $hobby"
-            checkbox.isChecked = true
-            param.width = 165
+            param.width = 190
             param.height = 230
-            param.marginStart = 30
+            param.marginStart = 15
             checkbox.layoutParams = param
             imagegrid.addView(checkbox)
+            checkbox.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable._checkbox_cook,0,0)
+            checkbox.setBackgroundResource(R.color.transparent)
+            checkbox.text= "      $hobby"
+            checkbox.setOnCheckedChangeListener{ _,ischecked ->
+                if(ischecked) myhobbylist.add(hobby)
+                else myhobbylist.remove(hobby)
+            }
         }
         if(hobby=="사진"){
             val param = GridLayout.LayoutParams()
-            checkbox.text = "     $hobby"
-            checkbox.isChecked = true
-            param.width = 165
+            param.width = 190
             param.height = 230
-            param.marginStart = 30
+            param.marginStart = 15
             checkbox.layoutParams = param
             imagegrid.addView(checkbox)
+            checkbox.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable._checkbox_photo,0,0)
+            checkbox.setBackgroundResource(R.color.transparent)
+            checkbox.text= "      $hobby"
+            checkbox.setOnCheckedChangeListener{ _,ischecked ->
+                if(ischecked) myhobbylist.add(hobby)
+                else myhobbylist.remove(hobby)
+            }
         }
         if(hobby=="게임"){
             val param = GridLayout.LayoutParams()
-            checkbox.text = "     $hobby"
-            checkbox.isChecked = true
-            param.width = 165
+            param.width = 190
             param.height = 230
-            param.marginStart = 30
+            param.marginStart = 15
             checkbox.layoutParams = param
             imagegrid.addView(checkbox)
+            checkbox.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable._checkbox_game,0,0)
+            checkbox.setBackgroundResource(R.color.transparent)
+            checkbox.text= "      $hobby"
+            checkbox.setOnCheckedChangeListener{ _,ischecked ->
+                if(ischecked) myhobbylist.add(hobby)
+                else myhobbylist.remove(hobby)
+            }
         }
         if(hobby=="댄스"){
             val param = GridLayout.LayoutParams()
-            checkbox.text = "     $hobby"
-            checkbox.isChecked = true
-            param.width = 165
+            param.width = 190
             param.height = 230
-            param.marginStart = 30
+            param.marginStart = 15
             checkbox.layoutParams = param
             imagegrid.addView(checkbox)
+            checkbox.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable._checkbox_dance,0,0)
+            checkbox.setBackgroundResource(R.color.transparent)
+            checkbox.text= "      $hobby"
+            checkbox.setOnCheckedChangeListener{ _,ischecked ->
+                if(ischecked) myhobbylist.add(hobby)
+                else myhobbylist.remove(hobby)
+            }
         }
         if(hobby=="자동차"){
             val param = GridLayout.LayoutParams()
-            checkbox.text = "     $hobby"
-            checkbox.isChecked = true
-            param.width = 165
+            param.width = 190
             param.height = 230
-            param.marginStart = 30
+            param.marginStart = 15
             checkbox.layoutParams = param
             imagegrid.addView(checkbox)
+            checkbox.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable._checkbox_car,0,0)
+            checkbox.setBackgroundResource(R.color.transparent)
+            checkbox.text= "      $hobby"
+            checkbox.setOnCheckedChangeListener{ _,ischecked ->
+                if(ischecked) myhobbylist.add(hobby)
+                else myhobbylist.remove(hobby)
+            }
         }
         if(hobby=="애완동물"){
             val param = GridLayout.LayoutParams()
-            checkbox.text = "     $hobby"
-            checkbox.isChecked = true
-            param.width = 165
+            param.width = 190
             param.height = 230
-            param.marginStart = 30
+            param.marginStart = 15
             checkbox.layoutParams = param
             imagegrid.addView(checkbox)
+            checkbox.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable._checkbox_pet,0,0)
+            checkbox.setBackgroundResource(R.color.transparent)
+            checkbox.text= "  $hobby"
+            checkbox.setOnCheckedChangeListener{ _,ischecked ->
+                if(ischecked) myhobbylist.add(hobby)
+                else myhobbylist.remove(hobby)
+            }
         }
         if(hobby=="공예"){
             val param = GridLayout.LayoutParams()
-            checkbox.text = "     $hobby"
-            checkbox.isChecked = true
-            param.width = 165
+            param.width = 190
             param.height = 230
-            param.marginStart = 30
+            param.marginStart = 15
             checkbox.layoutParams = param
             imagegrid.addView(checkbox)
+            checkbox.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable._checkbox_art,0,0)
+            checkbox.setBackgroundResource(R.color.transparent)
+            checkbox.text= "     $hobby"
+            checkbox.setOnCheckedChangeListener{ _,ischecked ->
+                if(ischecked) myhobbylist.add(hobby)
+                else myhobbylist.remove(hobby)
+            }
         }
         if(hobby=="봉사활동"){
             val param = GridLayout.LayoutParams()
-            checkbox.text = "     $hobby"
-            checkbox.isChecked = true
-            param.width = 165
+            param.width = 190
             param.height = 230
-            param.marginStart = 30
+            param.marginStart = 15
             checkbox.layoutParams = param
             imagegrid.addView(checkbox)
+            checkbox.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable._checkbox_volunteer,0,0)
+            checkbox.setBackgroundResource(R.color.transparent)
+            checkbox.text= "    $hobby"
+            checkbox.setOnCheckedChangeListener{ _,ischecked ->
+                if(ischecked) myhobbylist.add(hobby)
+                else myhobbylist.remove(hobby)
+            }
         }
         if(hobby=="스터디그룹"){
             val param = GridLayout.LayoutParams()
-            checkbox.text = "     $hobby"
-            checkbox.isChecked = true
-            param.width = 165
+            param.width = 190
             param.height = 230
-            param.marginStart = 30
+            param.marginStart = 15
             checkbox.layoutParams = param
             imagegrid.addView(checkbox)
+            checkbox.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable._checkbox_study,0,0)
+            checkbox.setBackgroundResource(R.color.transparent)
+            checkbox.text= " $hobby"
+            checkbox.setOnCheckedChangeListener{ _,ischecked ->
+                if(ischecked) myhobbylist.add(hobby)
+                else myhobbylist.remove(hobby)
+            }
         }
     }
 
@@ -229,7 +284,6 @@ class ChangeHobbyActivity:AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.changehobby_toolbar,menu)
-        val confirm=menu?.findItem(R.id.toolbar_next_button)
         return true
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -240,6 +294,14 @@ class ChangeHobbyActivity:AppCompatActivity() {
                 return true
             }
             R.id.toolbar_next_button->{
+                println(myhobbylist)
+                val data = hashMapOf("interest_array" to myhobbylist)
+                db.collection("user").document(Firebase.auth.currentUser?.uid.toString()).set(data,
+                    SetOptions.merge())
+                finish()
+                return true
+            }
+            R.id.cancel->{
                 finish()
                 return true
             }

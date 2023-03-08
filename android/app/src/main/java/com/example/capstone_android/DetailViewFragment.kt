@@ -68,7 +68,7 @@ class DetailViewFragment: Fragment() {
         })
         changefab.setOnClickListener{
             val intent=Intent(activity,ChangeHobbyActivity::class.java)
-            startActivity(intent)
+            startActivityForResult(intent,1)
         }
         fab.setOnClickListener{
             if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
@@ -103,9 +103,261 @@ class DetailViewFragment: Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        update()
+            if(requestCode==9)update()
+        else {
+                update_interest()
+                update()
+            }
     }
-
+    fun update_interest(){
+        scrapMainLayout?.removeAllViews()
+        db.collection("user").document(Firebase.auth.currentUser?.uid.toString()).get().addOnSuccessListener{ document->
+            val item=document.toObject(SignUpData::class.java)
+            for(data in item?.interest_array!!){
+                interest_text(data)
+            }
+        }
+    }
+    fun interest_text(data:String){
+        if(data=="운동"){
+            val param=GridLayout.LayoutParams()
+            val test=Button(context)
+            test.setBackgroundResource(R.drawable.shape_for_circle_button)
+            test.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.xml_sports,0,0)
+            test.text="운동"
+            param.width =165
+            param.height =230
+            param.marginStart=30
+            test.layoutParams=param
+            scrapMainLayout?.addView(test)
+            test.setOnClickListener {
+                val intent = Intent(activity, ClickiconActivity::class.java)
+                intent.putExtra("hobby", data)
+                startActivity(intent)
+            }
+        }
+        if(data=="음악"){
+            val test=Button(context)
+            val param=GridLayout.LayoutParams()
+            test.setBackgroundResource(R.drawable.shape_for_circle_button)
+            test.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.xml_music,0,0)
+            test.text="음악"
+            param.width=165
+            param.height=230
+            param.marginStart=30
+            test.layoutParams=param
+            scrapMainLayout?.addView(test)
+            test.setOnClickListener {
+                val intent = Intent(activity, ClickiconActivity::class.java)
+                intent.putExtra("hobby", data)
+                startActivity(intent)
+            }
+        }
+        if(data=="여행"){
+            val test=Button(context)
+            val param=GridLayout.LayoutParams()
+            test.setBackgroundResource(R.drawable.shape_for_circle_button)
+            test.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.xml_trip,0,0)
+            test.text="여행"
+            param.width=165
+            param.height=230
+            param.marginStart=30
+            test.layoutParams=param
+            scrapMainLayout?.addView(test)
+            test.setOnClickListener {
+                val intent = Intent(activity, ClickiconActivity::class.java)
+                intent.putExtra("hobby", data)
+                startActivity(intent)
+            }
+        }
+        if(data=="사교"){
+            val test=Button(context)
+            val param=GridLayout.LayoutParams()
+            test.setBackgroundResource(R.drawable.shape_for_circle_button)
+            test.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.xml_job,0,0)
+            test.text="사교"
+            param.width=165
+            param.height=230
+            param.marginStart=30
+            test.layoutParams=param
+            scrapMainLayout?.addView(test)
+            test.setOnClickListener {
+                val intent = Intent(activity, ClickiconActivity::class.java)
+                intent.putExtra("hobby", data)
+                startActivity(intent)
+            }
+        }
+        if(data=="독서"){
+            val test=Button(context)
+            val param=GridLayout.LayoutParams()
+            test.setBackgroundResource(R.drawable.shape_for_circle_button)
+            test.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.xml_read,0,0)
+            test.text="독서"
+            param.width=165
+            param.height=230
+            param.marginStart=30
+            test.layoutParams=param
+            scrapMainLayout?.addView(test)
+            test.setOnClickListener {
+                val intent = Intent(activity, ClickiconActivity::class.java)
+                intent.putExtra("hobby", data)
+                startActivity(intent)
+            }
+        }
+        if(data=="요리"){
+            val test=Button(context)
+            val param=GridLayout.LayoutParams()
+            test.setBackgroundResource(R.drawable.shape_for_circle_button)
+            test.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.xml_cook,0,0)
+            test.text="요리"
+            param.width=165
+            param.height=230
+            param.marginStart=30
+            test.layoutParams=param
+            scrapMainLayout?.addView(test)
+            test.setOnClickListener {
+                val intent = Intent(activity, ClickiconActivity::class.java)
+                intent.putExtra("hobby", data)
+                startActivity(intent)
+            }
+        }
+        if(data=="사진"){
+            val test=Button(context)
+            val param=GridLayout.LayoutParams()
+            test.setBackgroundResource(R.drawable.shape_for_circle_button)
+            test.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.xml_photo,0,0)
+            test.text="사진"
+            param.width=165
+            param.height=230
+            param.marginStart=30
+            test.layoutParams=param
+            scrapMainLayout?.addView(test)
+            test.setOnClickListener {
+                val intent = Intent(activity, ClickiconActivity::class.java)
+                intent.putExtra("hobby", data)
+                startActivity(intent)
+            }
+        }
+        if(data=="게임"){
+            val test=Button(context)
+            val param=GridLayout.LayoutParams()
+            test.setBackgroundResource(R.drawable.shape_for_circle_button)
+            test.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.xml_game,0,0)
+            test.text="게임"
+            param.width=165
+            param.height=230
+            param.marginStart=30
+            test.layoutParams=param
+            scrapMainLayout?.addView(test)
+            test.setOnClickListener {
+                val intent = Intent(activity, ClickiconActivity::class.java)
+                intent.putExtra("hobby", data)
+                startActivity(intent)
+            }
+        }
+        if(data=="댄스"){
+            val test=Button(context)
+            val param=GridLayout.LayoutParams()
+            test.setBackgroundResource(R.drawable.shape_for_circle_button)
+            test.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.xml_dance,0,0)
+            test.text="댄스"
+            param.width=165
+            param.height=230
+            param.marginStart=30
+            test.layoutParams=param
+            scrapMainLayout?.addView(test)
+            test.setOnClickListener {
+                val intent = Intent(activity, ClickiconActivity::class.java)
+                intent.putExtra("hobby", data)
+                startActivity(intent)
+            }
+        }
+        if(data=="자동차"){
+            val test=Button(context)
+            val param=GridLayout.LayoutParams()
+            test.setBackgroundResource(R.drawable.shape_for_circle_button)
+            test.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.xml_car,0,0)
+            test.text="자동차"
+            param.width=165
+            param.height=230
+            param.marginStart=30
+            test.layoutParams=param
+            scrapMainLayout?.addView(test)
+            test.setOnClickListener {
+                val intent = Intent(activity, ClickiconActivity::class.java)
+                intent.putExtra("hobby", data)
+                startActivity(intent)
+            }
+        }
+        if(data=="애완동물"){
+            val test=Button(context)
+            val param=GridLayout.LayoutParams()
+            test.setBackgroundResource(R.drawable.shape_for_circle_button)
+            test.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.xml_pet,0,0)
+            test.text="애완동물"
+            param.width=165
+            param.height=230
+            param.marginStart=30
+            test.layoutParams=param
+            scrapMainLayout?.addView(test)
+            test.setOnClickListener {
+                val intent = Intent(activity, ClickiconActivity::class.java)
+                intent.putExtra("hobby", data)
+                startActivity(intent)
+            }
+        }
+        if(data=="공예"){
+            val test=Button(context)
+            val param=GridLayout.LayoutParams()
+            test.setBackgroundResource(R.drawable.shape_for_circle_button)
+            test.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.xml_art,0,0)
+            test.text="공예"
+            param.width=165
+            param.height=230
+            param.marginStart=30
+            test.layoutParams=param
+            scrapMainLayout?.addView(test)
+            test.setOnClickListener {
+                val intent = Intent(activity, ClickiconActivity::class.java)
+                intent.putExtra("hobby", data)
+                startActivity(intent)
+            }
+        }
+        if(data=="봉사활동"){
+            val test=Button(context)
+            val param=GridLayout.LayoutParams()
+            test.setBackgroundResource(R.drawable.shape_for_circle_button)
+            test.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.xml_volunteer,0,0)
+            test.text="봉사활동"
+            param.width=165
+            param.height=230
+            param.marginStart=30
+            test.layoutParams=param
+            scrapMainLayout?.addView(test)
+            test.setOnClickListener {
+                val intent = Intent(activity, ClickiconActivity::class.java)
+                intent.putExtra("hobby", data)
+                startActivity(intent)
+            }
+        }
+        if(data=="스터디그룹"){
+            val test=Button(context)
+            val param=GridLayout.LayoutParams()
+            test.setBackgroundResource(R.drawable.shape_for_circle_button)
+            test.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.xml_study,0,0)
+            test.text="스터디"
+            param.width=165
+            param.height=230
+            param.marginStart=30
+            test.layoutParams=param
+            scrapMainLayout?.addView(test)
+            test.setOnClickListener {
+                val intent = Intent(activity, ClickiconActivity::class.java)
+                intent.putExtra("hobby", data)
+                startActivity(intent)
+            }
+        }
+    }
     @SuppressLint("NotifyDataSetChanged", "SetTextI18n")
     fun update() {
 
@@ -146,244 +398,7 @@ class DetailViewFragment: Fragment() {
                 val item=document.toObject(SignUpData::class.java)
                 view?.UserName?.text=item?.nickname+"님을"
                 for(data in item?.interest_array!!){
-                    if(data=="운동"){
-                        val param=GridLayout.LayoutParams()
-                        val test=Button(context)
-                        test.setBackgroundResource(R.drawable.shape_for_circle_button)
-                        test.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.xml_sports,0,0)
-                        test.text="운동"
-                        param.width =165
-                        param.height =230
-                        param.marginStart=30
-                        test.layoutParams=param
-                        scrapMainLayout?.addView(test)
-                        test.setOnClickListener {
-                            val intent = Intent(activity, ClickiconActivity::class.java)
-                            intent.putExtra("hobby", data)
-                            startActivity(intent)
-                        }
-                    }
-                    if(data=="음악"){
-                        val test=Button(context)
-                        val param=GridLayout.LayoutParams()
-                        test.setBackgroundResource(R.drawable.shape_for_circle_button)
-                        test.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.xml_music,0,0)
-                        test.text="음악"
-                        param.width=165
-                        param.height=230
-                        param.marginStart=30
-                        test.layoutParams=param
-                        scrapMainLayout?.addView(test)
-                        test.setOnClickListener {
-                            val intent = Intent(activity, ClickiconActivity::class.java)
-                            intent.putExtra("hobby", data)
-                            startActivity(intent)
-                        }
-                    }
-                    if(data=="여행"){
-                        val test=Button(context)
-                        val param=GridLayout.LayoutParams()
-                        test.setBackgroundResource(R.drawable.shape_for_circle_button)
-                        test.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.xml_trip,0,0)
-                        test.text="여행"
-                        param.width=165
-                        param.height=230
-                        param.marginStart=30
-                        test.layoutParams=param
-                        scrapMainLayout?.addView(test)
-                        test.setOnClickListener {
-                            val intent = Intent(activity, ClickiconActivity::class.java)
-                            intent.putExtra("hobby", data)
-                            startActivity(intent)
-                        }
-                    }
-                    if(data=="사교"){
-                        val test=Button(context)
-                        val param=GridLayout.LayoutParams()
-                        test.setBackgroundResource(R.drawable.shape_for_circle_button)
-                        test.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.xml_job,0,0)
-                        test.text="사교"
-                        param.width=165
-                        param.height=230
-                        param.marginStart=30
-                        test.layoutParams=param
-                        scrapMainLayout?.addView(test)
-                        test.setOnClickListener {
-                            val intent = Intent(activity, ClickiconActivity::class.java)
-                            intent.putExtra("hobby", data)
-                            startActivity(intent)
-                        }
-                    }
-                    if(data=="독서"){
-                        val test=Button(context)
-                        val param=GridLayout.LayoutParams()
-                        test.setBackgroundResource(R.drawable.shape_for_circle_button)
-                        test.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.xml_read,0,0)
-                        test.text="독서"
-                        param.width=165
-                        param.height=230
-                        param.marginStart=30
-                        test.layoutParams=param
-                        scrapMainLayout?.addView(test)
-                        test.setOnClickListener {
-                            val intent = Intent(activity, ClickiconActivity::class.java)
-                            intent.putExtra("hobby", data)
-                            startActivity(intent)
-                        }
-                    }
-                    if(data=="요리"){
-                        val test=Button(context)
-                        val param=GridLayout.LayoutParams()
-                        test.setBackgroundResource(R.drawable.shape_for_circle_button)
-                        test.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.xml_cook,0,0)
-                        test.text="요리"
-                        param.width=165
-                        param.height=230
-                        param.marginStart=30
-                        test.layoutParams=param
-                        scrapMainLayout?.addView(test)
-                        test.setOnClickListener {
-                            val intent = Intent(activity, ClickiconActivity::class.java)
-                            intent.putExtra("hobby", data)
-                            startActivity(intent)
-                        }
-                    }
-                    if(data=="사진"){
-                        val test=Button(context)
-                        val param=GridLayout.LayoutParams()
-                        test.setBackgroundResource(R.drawable.shape_for_circle_button)
-                        test.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.xml_photo,0,0)
-                        test.text="사진"
-                        param.width=165
-                        param.height=230
-                        param.marginStart=30
-                        test.layoutParams=param
-                        scrapMainLayout?.addView(test)
-                        test.setOnClickListener {
-                            val intent = Intent(activity, ClickiconActivity::class.java)
-                            intent.putExtra("hobby", data)
-                            startActivity(intent)
-                        }
-                    }
-                    if(data=="게임"){
-                        val test=Button(context)
-                        val param=GridLayout.LayoutParams()
-                        test.setBackgroundResource(R.drawable.shape_for_circle_button)
-                        test.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.xml_game,0,0)
-                        test.text="게임"
-                        param.width=165
-                        param.height=230
-                        param.marginStart=30
-                        test.layoutParams=param
-                        scrapMainLayout?.addView(test)
-                        test.setOnClickListener {
-                            val intent = Intent(activity, ClickiconActivity::class.java)
-                            intent.putExtra("hobby", data)
-                            startActivity(intent)
-                        }
-                    }
-                    if(data=="댄스"){
-                        val test=Button(context)
-                        val param=GridLayout.LayoutParams()
-                        test.setBackgroundResource(R.drawable.shape_for_circle_button)
-                        test.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.xml_dance,0,0)
-                        test.text="댄스"
-                        param.width=165
-                        param.height=230
-                        param.marginStart=30
-                        test.layoutParams=param
-                        scrapMainLayout?.addView(test)
-                        test.setOnClickListener {
-                            val intent = Intent(activity, ClickiconActivity::class.java)
-                            intent.putExtra("hobby", data)
-                            startActivity(intent)
-                        }
-                    }
-                    if(data=="자동차"){
-                        val test=Button(context)
-                        val param=GridLayout.LayoutParams()
-                        test.setBackgroundResource(R.drawable.shape_for_circle_button)
-                        test.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.xml_car,0,0)
-                        test.text="자동차"
-                        param.width=165
-                        param.height=230
-                        param.marginStart=30
-                        test.layoutParams=param
-                        scrapMainLayout?.addView(test)
-                        test.setOnClickListener {
-                            val intent = Intent(activity, ClickiconActivity::class.java)
-                            intent.putExtra("hobby", data)
-                            startActivity(intent)
-                        }
-                    }
-                    if(data=="애완동물"){
-                        val test=Button(context)
-                        val param=GridLayout.LayoutParams()
-                        test.setBackgroundResource(R.drawable.shape_for_circle_button)
-                        test.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.xml_pet,0,0)
-                        test.text="애완동물"
-                        param.width=165
-                        param.height=230
-                        param.marginStart=30
-                        test.layoutParams=param
-                        scrapMainLayout?.addView(test)
-                        test.setOnClickListener {
-                            val intent = Intent(activity, ClickiconActivity::class.java)
-                            intent.putExtra("hobby", data)
-                            startActivity(intent)
-                        }
-                    }
-                    if(data=="공예"){
-                        val test=Button(context)
-                        val param=GridLayout.LayoutParams()
-                        test.setBackgroundResource(R.drawable.shape_for_circle_button)
-                        //test.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.xml_art,0,0)
-                        test.text="공예"
-                        param.width=165
-                        param.height=230
-                        param.marginStart=30
-                        test.layoutParams=param
-                        scrapMainLayout?.addView(test)
-                        test.setOnClickListener {
-                            val intent = Intent(activity, ClickiconActivity::class.java)
-                            intent.putExtra("hobby", data)
-                            startActivity(intent)
-                        }
-                    }
-                    if(data=="봉사활동"){
-                        val test=Button(context)
-                        val param=GridLayout.LayoutParams()
-                        test.setBackgroundResource(R.drawable.shape_for_circle_button)
-                        test.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.xml_volunteer,0,0)
-                        test.text="봉사활동"
-                        param.width=165
-                        param.height=230
-                        param.marginStart=30
-                        test.layoutParams=param
-                        scrapMainLayout?.addView(test)
-                        test.setOnClickListener {
-                            val intent = Intent(activity, ClickiconActivity::class.java)
-                            intent.putExtra("hobby", data)
-                            startActivity(intent)
-                        }
-                    }
-                    if(data=="스터디그룹"){
-                        val test=Button(context)
-                        val param=GridLayout.LayoutParams()
-                        test.setBackgroundResource(R.drawable.shape_for_circle_button)
-                        test.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.xml_study,0,0)
-                        test.text="스터디"
-                        param.width=165
-                        param.height=230
-                        param.marginStart=30
-                        test.layoutParams=param
-                        scrapMainLayout?.addView(test)
-                        test.setOnClickListener {
-                            val intent = Intent(activity, ClickiconActivity::class.java)
-                            intent.putExtra("hobby", data)
-                            startActivity(intent)
-                        }
-                    }
+                  interest_text(data)
                     db.collection("category").document(data).get().addOnSuccessListener { document2 ->
                         val item2 = document2.toObject(getclubuid::class.java)
                         if (item2?.RoomId != null){

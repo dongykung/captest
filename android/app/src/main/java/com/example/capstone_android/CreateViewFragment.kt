@@ -146,12 +146,16 @@ class CreateViewFragment: Fragment() {
                 clubdata.upload_time = System.currentTimeMillis()
                 clubdata.writer_uid = Firebase.auth.currentUser?.uid.toString()
                 clubdata.Uid=makeuid
-                db.collection("meeting_room").document(makeuid).set(clubdata)
-                db.collection("meeting_room").document(makeuid).update("member_list",FieldValue.arrayUnion(Firebase.auth.currentUser?.uid.toString()))
-                db.collection("user").document(Firebase.auth.currentUser?.uid.toString()).update("meeting_room_id_list",FieldValue.arrayUnion(makeuid))
+                db.collection("meeting_room").document(makeuid).set(clubdata).addOnSuccessListener{
+                    db.collection("meeting_room").document(makeuid).update("member_list",FieldValue.arrayUnion(Firebase.auth.currentUser?.uid.toString())).addOnSuccessListener{
+                        db.collection("user").document(Firebase.auth.currentUser?.uid.toString()).update("meeting_room_id_list",FieldValue.arrayUnion(makeuid)).addOnSuccessListener{
+                            activity?.finish()
+                            println("모임만들기 성공")
+                        }
+                    }
+                }
             }
         }
-        println("모임만들기성공")
-        activity?.finish()
+
     }
 }
