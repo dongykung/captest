@@ -296,8 +296,7 @@ class ChangeHobbyActivity:AppCompatActivity() {
             R.id.toolbar_next_button->{
                 println(myhobbylist)
                 val data = hashMapOf("interest_array" to myhobbylist)
-                db.collection("user").document(Firebase.auth.currentUser?.uid.toString()).set(data,
-                    SetOptions.merge())
+                db.collection("user").document(Firebase.auth.currentUser?.uid.toString()).set(data, SetOptions.merge())
                 finish()
                 return true
             }
