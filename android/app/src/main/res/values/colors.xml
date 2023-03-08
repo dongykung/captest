@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="not">#00ff0000</color>
     <color name="recycle">#FF3300FF</color>
+    <color name="transparent">#00000000</color>
 </resources>
