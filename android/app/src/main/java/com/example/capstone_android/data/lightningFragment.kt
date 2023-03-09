@@ -59,6 +59,7 @@ class lightningFragment: Fragment() {
             for (snapshot in querySnapshot.documents) {
               val item=snapshot.toObject(lightData::class.java)
                 println(item?.title)
+                println("성공")
             }
         }
     }
