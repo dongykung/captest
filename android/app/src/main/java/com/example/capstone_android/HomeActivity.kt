@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import com.example.capstone_android.data.lightningFragment
 import com.example.capstone_android.databinding.ActivityHomeBinding
 import com.example.capstone_android.databinding.ActivityMainBinding
 import com.google.firebase.auth.ktx.auth
@@ -39,6 +40,11 @@ class HomeActivity: AppCompatActivity() {
                 }
                 R.id.action_gps ->{
 
+                    return@setOnItemSelectedListener true
+                }
+                R.id.action_Lightning->{
+                    val lightningFragment=lightningFragment()
+                    supportFragmentManager.beginTransaction().replace(R.id.main_content,lightningFragment).commit()
                     return@setOnItemSelectedListener true
                 }
                 R.id.action_account ->{

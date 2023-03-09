@@ -6,6 +6,11 @@
         android:icon="@drawable/home"
         android:title="@string/home" />
     <item
+        android:id="@+id/action_Lightning"
+        android:enabled="true"
+        android:icon="@drawable/lightning"
+        android:title="@string/Lightning" />
+    <item
         android:id="@+id/action_gps"
         android:enabled="true"
         android:icon="@drawable/gps"

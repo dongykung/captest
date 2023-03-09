@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+    <Button
+        android:id="@+id/sport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_for_circle_button"
+        android:drawableTop="@drawable/xml_sports"
+        android:text="운동"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/game"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_for_circle_button"
+        android:drawableTop="@drawable/xml_game"
+        android:text="게임/오락"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/friend"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/dance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_for_circle_button"
+        android:drawableTop="@drawable/xml_dance"
+        android:text="댄스/무용"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/game"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/friend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_for_circle_button"
+        android:drawableTop="@drawable/xml_job"
+        android:text="친목/인맥"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/sport"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/concert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="공연/축제"
+        android:textColor="@color/black"
+        android:background="@drawable/shape_for_circle_button"
+        android:drawableTop="@drawable/xml_festival"
+        app:layout_constraintStart_toStartOf="@+id/sport"
+        app:layout_constraintTop_toBottomOf="@+id/sport" />
+
+    <Button
+        android:id="@+id/music"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_for_circle_button"
+        android:drawableTop="@drawable/xml_music"
+        android:text="음악"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/concert"
+        app:layout_constraintTop_toBottomOf="@+id/sport" />
+
+    <Button
+        android:id="@+id/study"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_for_circle_button"
+        android:drawableTop="@drawable/xml_study"
+        android:text="공부/토론"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/music"
+        app:layout_constraintTop_toBottomOf="@+id/sport" />
+
+    <Button
+        android:id="@+id/free"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_for_circle_button"
+        android:drawableTop="@drawable/xml_setting"
+        android:text="자유주제"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/study"
+        app:layout_constraintTop_toBottomOf="@+id/sport" />
+
+    <GridLayout
+        android:id="@+id/lightgrid"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:columnCount="5"
+        app:layout_constraintBottom_toTopOf="@+id/lightrecycler"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/study">
+
+
+    </GridLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/lightrecycler"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="510dp"
+        android:nestedScrollingEnabled="false"
+        android:overScrollMode="never"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/lightgrid"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
