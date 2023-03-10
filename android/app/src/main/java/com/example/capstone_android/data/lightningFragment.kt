@@ -54,12 +54,17 @@ class lightningFragment: Fragment() {
         return view
     }
     fun getlightdata(hobby:String,sport:String){
+        db.collection("light").document(hobby).collection(sport).get().addOnSuccessListener{    document->
+            for(data in document){
+                println(data)
+            }
+        }
         db.collection("light").document(hobby).collection(sport).addSnapshotListener{querySnapshot, firebaseFirestoreException ->
             if (querySnapshot == null) return@addSnapshotListener
             for (snapshot in querySnapshot.documents) {
               val item=snapshot.toObject(lightData::class.java)
                 println(item?.title)
-                println("성공")
+
             }
         }
     }

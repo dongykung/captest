@@ -1,6 +1,5 @@
 package com.example.capstone_android
 
-import android.R
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
@@ -23,6 +22,7 @@ class SignUpActivity : AppCompatActivity() { // 회원가입 화면
     private val binding by lazy {
         ActivitySignUpBinding.inflate(layoutInflater)
     }
+
     val db = Firebase.firestore
     val st = FirebaseStorage.getInstance()
     private val OPEN_GALLERY = 1
@@ -153,6 +153,7 @@ class SignUpActivity : AppCompatActivity() { // 회원가입 화면
                         signdata.profile_message=""
                         signdata.interest_array=interest_array
                         signdata.edit_time=System.currentTimeMillis()
+
 
                         // DB postings 컬렉션 레퍼런스 가져오기
                         db.collection("user").document(Firebase.auth.currentUser?.uid.toString()).set(signdata)

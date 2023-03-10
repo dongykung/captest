@@ -9,4 +9,5 @@ data class SignUpData(var email:String?=null,
                       var profile_message:String?=null,
                       var interest_array:ArrayList<String>?=ArrayList<String>(),
                       var meeting_room_id_list:ArrayList<String>?=ArrayList<String>(),
-                      var edit_time:Long?=null)
+                      var edit_time:Long?=null,
+                       )
