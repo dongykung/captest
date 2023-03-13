@@ -39,7 +39,8 @@ class HomeActivity: AppCompatActivity() {
                     return@setOnItemSelectedListener true
                 }
                 R.id.action_gps ->{
-
+                    val mapViewFragment=MapFragment()
+                    supportFragmentManager.beginTransaction().replace(R.id.main_content,mapViewFragment).commit()
                     return@setOnItemSelectedListener true
                 }
                 R.id.action_Lightning->{
